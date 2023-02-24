@@ -15,6 +15,15 @@ namespace ProgrammingAssignment1
         #region Fields
 
         // declare your fields here
+        string firstName;
+        string middleName;
+        string lastName;
+        string streetAddress;
+        string city;
+        string state;
+        string postalCode;
+        string country;
+        string phoneNumber; 
 
         #endregion
 
@@ -28,7 +37,7 @@ namespace ProgrammingAssignment1
             get 
             {
                 // delete code below and replace with correct code
-                return "";
+                return firstName;
             }
         }
 
@@ -40,7 +49,7 @@ namespace ProgrammingAssignment1
             get
             {
                 // delete code below and replace with correct code
-                return "";
+                return middleName;
             }
         }
 
@@ -52,7 +61,7 @@ namespace ProgrammingAssignment1
             get
             {
                 // delete code below and replace with correct code
-                return "";
+                return lastName;
             }
         }
 
@@ -64,7 +73,7 @@ namespace ProgrammingAssignment1
             get
             {
                 // delete code below and replace with correct code
-                return "";
+                return streetAddress;
             }
         }
 
@@ -76,7 +85,7 @@ namespace ProgrammingAssignment1
             get
             {
                 // delete code below and replace with correct code
-                return "";
+                return city;
             }
         }
 
@@ -88,7 +97,7 @@ namespace ProgrammingAssignment1
             get
             {
                 // delete code below and replace with correct code
-                return "";
+                return state;
             }
         }
 
@@ -100,7 +109,7 @@ namespace ProgrammingAssignment1
             get
             {
                 // delete code below and replace with correct code
-                return "";
+                return postalCode;
             }
         }
 
@@ -112,7 +121,7 @@ namespace ProgrammingAssignment1
             get
             {
                 // delete code below and replace with correct code
-                return "";
+                return country;
             }
         }
 
@@ -125,7 +134,7 @@ namespace ProgrammingAssignment1
             get
             {
                 // delete code below and replace with correct code
-                return "";
+                return phoneNumber;
             }
         }
 
@@ -154,6 +163,43 @@ namespace ProgrammingAssignment1
             // Substring method to chop off the front of the string
             // after you extract each value to extract and save the
             // personal data
+
+            StreamReader input = null;
+
+            try
+            {
+                input = File.OpenText(fileName);
+
+                string values = input.ReadLine();
+
+                SetDataFields(values);
+            } catch (Exception e)
+            {
+                //Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                if (input != null)
+                {
+                    input.Close();
+                }
+            }
+        }
+        
+        void SetDataFields(string txtValues)
+        {
+            // John,Quincy,Public,123 Main Street,Anytown,Bliss,54545,United States,6175554321
+            string[] values = txtValues.Split(',');
+
+            firstName = values[0];
+            middleName = values[1];
+            lastName = values[2];
+            streetAddress = values[3];
+            city = values[4];
+            state = values[5];
+            postalCode = values[6];
+            country = values[7];
+            phoneNumber = values[8];
         }
 
         #endregion
